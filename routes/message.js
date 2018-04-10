@@ -15,7 +15,7 @@ router.get('/messages', function (req, res, next) {
 });
 
 router.get('/onemsgs', function (req, res, next) {
-  MsgModel.query(req.query.openid, function(err, msgs) {
+  MsgModel.queryOne(req.query.openid, function(err, msgs) {
     if (err) {
       res.json({ Data: err })
     } else {

@@ -9,12 +9,14 @@ var MsgSchema = new mongoose.Schema({
   MarketName: String,
   ProjectId: String,
   ProjectName: String,
+  ProjectContent: String,
   Openid: String,
   Name: String,
   Tel: String,
   Content: String,
   Picture: Array,
   Reply: Array,
+  Status: String
 })
 
 MsgSchema.statics = {
