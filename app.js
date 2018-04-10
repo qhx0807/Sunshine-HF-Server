@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose')
-var config = require('./config/index.js').default;
+var config = require('./config/index.js');
 
 var logModel = require('./service/log-service')
 
