@@ -16,7 +16,8 @@ var MsgSchema = new mongoose.Schema({
   Content: String,
   Picture: Array,
   Reply: Array,
-  Status: String
+  Status: String,
+  Date: String
 })
 
 MsgSchema.statics = {
@@ -34,7 +35,7 @@ MsgSchema.statics = {
     return this.find().exec(cb)
   },
   rep: function(id, doc, cb){
-    return this.update({_id: id}, { $push: {Reply: doc} }).exec(cb)
+    return this.update({_id: id}, { $push: {Reply: doc}, $set: {'Status':'已处理'} }).exec(cb)
   },
   queryOne: function(openid, cb){
     return this.find({Openid: openid}).exec(cb)
