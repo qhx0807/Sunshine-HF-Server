@@ -46,7 +46,6 @@ router.delete('/messages', function (req, res, next) {
 });
 
 router.post('/reply', function (req, res, next) {
-  console.log(req.body)
   MsgModel.rep(req.body.id, req.body.doc, function (err) {
     if (err) {
       res.json({ Data: err })
