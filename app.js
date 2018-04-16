@@ -43,9 +43,12 @@ app.all('*', function (req, res, next) {
 })
 
 app.use(function (req, res, next) {
+  /*
   if(req.method == 'OPTIONS'){
     res.sendStatus(200).end()
-  }else if(req.method == 'POST' || req.method == 'DELETE' || req.method == 'PUT'){
+  }else
+  */
+   if(req.method == 'POST' || req.method == 'DELETE' || req.method == 'PUT'){
     var doc = {
       time: new Date().toLocaleString(),
       api: req.originalUrl,
