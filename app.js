@@ -15,6 +15,7 @@ var houseRouter = require('./routes/house');
 var marketRouter = require('./routes/market');
 var logRouter = require('./routes/log');
 var uploadRouter = require('./routes/upload');
+var smsRouter = require('./routes/sms');
 
 var app = express();
 
@@ -70,6 +71,7 @@ app.use('/', houseRouter);
 app.use('/', marketRouter);
 app.use('/', logRouter);
 app.use('/', uploadRouter);
+app.use('/', smsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
