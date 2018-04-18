@@ -16,7 +16,7 @@ router.get('/verifycode', function (req, res, next) {
   var code = creatRandomNum()
   var password = md5(config.smsId + md5(config.smsSecret))
   var mobile = req.query.mobile
-  var content = encodeURI(req.query.content+code, "UTF-8")
+  var content = encodeURI(code)
   var url = config.smsUrl + '?username='+ config.smsId + '&password=' + password + '&mobile=' + mobile + '&content=' + content
   request(url, function(error, response, body){
     if(error){

@@ -16,6 +16,8 @@ var marketRouter = require('./routes/market');
 var logRouter = require('./routes/log');
 var uploadRouter = require('./routes/upload');
 var smsRouter = require('./routes/sms');
+var telRouter = require('./routes/tel');
+var autoRouter = require('./routes/autoreply');
 
 var app = express();
 
@@ -72,6 +74,8 @@ app.use('/', marketRouter);
 app.use('/', logRouter);
 app.use('/', uploadRouter);
 app.use('/', smsRouter);
+app.use('/', telRouter);
+app.use('/', autoRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
