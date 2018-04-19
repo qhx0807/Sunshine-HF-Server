@@ -35,7 +35,8 @@ router.post('/messages', function (req, res, next) {
   var msgDoc = req.body
   var phone = req.body.Tel
   var password = md5(config.smsId + md5(config.smsSecret))
-  var replyAdmin = encodeURI('xxxxxx') //给管理员发送消息模板
+  var smsAdmin = encodeURI('【阳光宏帆】：管理员您好，留言板收到新的意见，请及时查看。') //给管理员发送消息模板
+  var smsUser = encodeURI('您好，阳光宏帆已收到您的信息，谢谢。') // 给用户发的短信
   AutoModel.query(function(er, doc){
     var content = doc[0].content // 自动回复给留言者内容
     msgDoc.Reply.push({
@@ -54,15 +55,21 @@ router.post('/messages', function (req, res, next) {
           d.forEach(element => {
             telArr.push(element.Tel)
           })
+
+          // 发送短信给用户 暂不启用
+          // var userurl = config.smsUrl + '?username='+ config.smsId + '&password=' + password + '&mobile=' + phone + '&content=' + smsUser
+          // request(adminurl, function(error, response, body){})
+
           //发送短信给管理员
-          var url = config.smsUrl + '?username='+ config.smsId + '&password=' + password + '&mobile=' + telArr.toString() + '&content=' + replyAdmin
-          request(url, function(error, response, body){
+          var adminurl = config.smsUrl + '?username='+ config.smsId + '&password=' + password + '&mobile=' + telArr.toString() + '&content=' + smsAdmin
+          request(adminurl, function(error, response, body){
             if(error){
               res.json({ Data: error })
             }else{
               res.json({ OK: 'ok' })
             }
           })
+
         })
       }
     })
