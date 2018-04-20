@@ -38,7 +38,7 @@ MsgSchema.statics = {
     return this.update({_id: id}, { $push: {Reply: doc}, $set: {'Status':'已处理'} }).exec(cb)
   },
   queryOne: function(openid, cb){
-    return this.find({Openid: openid}).exec(cb)
+    return this.find({Openid: openid}).sort({_id: -1}).exec(cb)
   }
 }
 
