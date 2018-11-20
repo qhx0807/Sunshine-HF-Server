@@ -18,8 +18,8 @@ router.get('/verifycode', function (req, res, next) {
   var mobile = req.query.mobile
   var tmp = `【阳光宏帆】：${code}是您本次提交留言的验证码，10分钟内有效，请及时录入。谢谢！`
   var content = encodeURI(tmp)
-  var url = config.smsUrl + '?username='+ config.smsId + '&password=' + password + '&mobile=' + mobile + '&content=' + content
-  request(url, function(error, response, body){
+  var url = config.smsUrl + '?username=' + config.smsId + '&password=' + password + '&mobile=' + mobile + '&content=' + content
+  request(url, function (error, response, body) {
     if(error){
       res.json({ Data: error })
     }else{
