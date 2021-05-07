@@ -111,5 +111,15 @@ router.post('/reply', function (req, res, next) {
   })
 });
 
+router.post('/changeStatus', function(req, res, next) {
+  MsgModel.rep(req.body.id, function (err) {
+    if (err) {
+      res.json({ Data: err })
+    }else{
+      res.json({ OK: 'ok' })
+    }
+  })
+})
+
 
 module.exports = router;
